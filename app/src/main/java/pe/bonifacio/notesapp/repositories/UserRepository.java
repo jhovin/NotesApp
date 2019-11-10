@@ -1,0 +1,34 @@
+package pe.bonifacio.notesapp.repositories;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import pe.bonifacio.notesapp.models.User;
+
+public class UserRepository {
+    private static List<User> users = new ArrayList<>();
+
+    static {
+        users.add(new User(200, "jhovin", "tecsup", "Jaime Farfán"));
+
+    }
+
+    public static User login(String username, String password) {
+        for (User user : users) {
+            if(user.getUsername().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public static User findByUsername(String username){
+        for (User user : users) {
+            if(user.getUsername().equalsIgnoreCase(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+}
